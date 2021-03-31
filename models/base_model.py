@@ -19,14 +19,9 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
         if not kwargs:
-            # from models import storage
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            # self.id = Column('id', String(60), unique=True, primary_key=True, nullable=False)
-            # self.created_at = Column('created_at', datetime, nullable=False, default=datetime.utcnow())
-            # self.updated_at = Column('updated_at', datetime, nullable=False, default=datetime.utcnow())
-            # storage.new(self)
             pass
         else:
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
@@ -51,19 +46,8 @@ class BaseModel:
 
     def delete(self):
         """Deletes an instance from storage"""
-        from models import storage   
+        from models import storage
         storage.delete(self)
-        # if (self is None):
-        #     return
-
-        # key = self.__class__.__name__ + '.' + self.id
-
-        # try:
-        #     del(storage.all()[key])
-        #     storage.save()
-        # except KeyError:
-        #     print("** no instance found **")
-
 
     def to_dict(self):
         """Convert instance into dict format"""

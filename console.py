@@ -135,12 +135,15 @@ class HBNBCommand(cmd.Cmd):
                         # self.do_update("{} {} {} {}".format(
                         #     new_instance.__class__.__name__,
                         #     new_instance.id, attribute[0], attribute[1]))
-                        new_instance.__dict__.update({attribute[0]:attribute[1].strip('"')})
+                        new_instance.__dict__.update({
+                            attribute[0]: attribute[1].strip('"')})
                     elif (attribute[1].replace('.', '', 1).isdigit()):
                         if attribute[1].isdigit():
-                            new_instance.__dict__.update({attribute[0]:int(attribute[1])})
+                            new_instance.__dict__.update({
+                                attribute[0]: int(attribute[1])})
                         else:
-                            new_instance.__dict__.update({attribute[0]:float(attribute[1])})
+                            new_instance.__dict__.update({
+                                attribute[0]: float(attribute[1])})
                         # self.do_update("{} {} {} {}".format(
                         #     new_instance.__class__.__name__,
                         #     new_instance.id, attribute[0], attribute[1]))
@@ -229,11 +232,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage.all().items():
+            for k, v in storage.all(args).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage.all().items():
+            for k, v in storage.all(args).items():
                 print_list.append(str(v))
         print('[%s]' % ', '.join(map(str, print_list)))
 
