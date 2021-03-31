@@ -42,7 +42,6 @@ class DBStorage:
             for name in classes:
                 if cls == name:
                     find = self.__session.query(classes[name]).all()
-                    print(find)
                     for i in find:
                         key = i.__class__.__name__ + '.' + i.id
                         dict_objs[key] = i
