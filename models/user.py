@@ -10,8 +10,8 @@ class User(BaseModel, Base):
     __tablename__ = "users"
     email = Column('email', String(128), nullable=False)
     password = Column('password', String(128), nullable=False)
-    first_name = Column('first_name', String(128), nullable=False)
-    last_name = Column('last_name', String(128), nullable=False)
+    first_name = Column('first_name', String(128), nullable=True, default="NULL")
+    last_name = Column('last_name', String(128), nullable=True, default="NULL")
     # backref may need to be back_populates?Below line commented out bc console
     # would not run with it in. This line was implemented in Task 8
     places = relationship("Place", cascade="delete", backref="user")
