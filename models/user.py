@@ -12,5 +12,8 @@ class User(BaseModel, Base):
     password = Column('password', String(128), nullable=False)
     first_name = Column('first_name', String(128), nullable=False)
     last_name = Column('last_name', String(128), nullable=False)
-    # backref may need to be back_populates?
-    # places = relationship("Place", cascade="delete", backref="user")
+    # backref may need to be back_populates?Below line commented out bc console
+    # would not run with it in. This line was implemented in Task 8
+    places = relationship("Place", cascade="delete", backref="user")
+    # Below line is commented out for caution and was added in Task 9
+    reviews = relationship("Review", cascade="delete", backref="user")
