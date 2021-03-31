@@ -51,18 +51,19 @@ class BaseModel:
 
     def delete(self):
         """Deletes an instance from storage"""
-        from models import storage
+        from models import storage   
+        storage.delete(self)
+        # if (self is None):
+        #     return
 
-        if (self is None):
-            return
+        # key = self.__class__.__name__ + '.' + self.id
 
-        key = self.__class__.__name__ + '.' + self.id
+        # try:
+        #     del(storage.all()[key])
+        #     storage.save()
+        # except KeyError:
+        #     print("** no instance found **")
 
-        try:
-            del(storage.all()[key])
-            storage.save()
-        except KeyError:
-            print("** no instance found **")
 
     def to_dict(self):
         """Convert instance into dict format"""
@@ -70,7 +71,7 @@ class BaseModel:
         dictionary.update(self.__dict__)
 
         # remove the key if it exists
-        if (dictionary.get("_sa_instance_state") != None):
+        if (dictionary.get("_sa_instance_state")):
             dictionary.pop("_sa_instance_state")
 
         dictionary.update({'__class__':
