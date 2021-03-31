@@ -42,3 +42,9 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("destroy NUGGET")
             self.assertEqual(f.getvalue(), "\n** class doesn't exist **\n")
+
+    def test_destroy(self):
+        """ test detroy method """
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().onecmd("destroy NUGGET")
+            self.assertEqual(f.getvalue(), "\n** class doesn't exist **\n")
