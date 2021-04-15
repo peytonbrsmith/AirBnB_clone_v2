@@ -8,6 +8,11 @@ import time
 
 
 def do_pack():
+    """do_pack
+
+    Returns:
+        [string] -- [path to archive]
+    """
     localtime = time.localtime(time.time())
     if int(localtime.tm_mon) < 10:
         curmonth = "0{}".format(localtime.tm_mon)
@@ -21,4 +26,7 @@ def do_pack():
     archive = local("tar -cvzf {} web_static".format(archivepath),
                     capture=True)
     print(archive)
-    return archivepath
+    if archive:
+        return archivepath
+    else:
+        return None
