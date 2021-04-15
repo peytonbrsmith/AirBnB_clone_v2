@@ -14,10 +14,10 @@ def do_pack():
         [string] -- [path to archive]
     """
     localtime = time.localtime(time.time())
-    if int(localtime.tm_mon) < 10:
-        curmonth = "0{}".format(localtime.tm_mon)
-    else:
-        curmonth = localtime.tm_mon
+    # if int(localtime.tm_mon) < 10:
+    #     curmonth = "0{}".format(localtime.tm_mon)
+    # else:
+    curmonth = localtime.tm_mon
     curtime = "{}{}{}{}{}{}".format(localtime.tm_year,
                                     curmonth, localtime.tm_mday,
                                     localtime.tm_hour, localtime.tm_min,
