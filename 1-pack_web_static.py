@@ -22,8 +22,9 @@ def do_pack():
                                     curmonth, localtime.tm_mday,
                                     localtime.tm_hour, localtime.tm_min,
                                     localtime.tm_sec)
+    local("sudo mkdir -p versions")
     archivepath = "versions/web_static_{}.tgz".format(curtime)
-    archive = local("tar -cvzf {} web_static".format(archivepath),
+    archive = local("tar -cvzf {} web_static/".format(archivepath),
                     capture=True)
     if archive:
         return archive
