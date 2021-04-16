@@ -5,10 +5,9 @@ from fabric.api import local, env, run, put, sudo
 from fabric.contrib import files
 
 
-env.user = "ubuntu"
-env.hosts = ['web-01.peytonsmith.tech', 'web-02.peytonsmith.tech']
+env.hosts = ['34.74.188.209', '54.226.48.62']
 # env.key_filename = "~/.ssh/holberton"
-
+# env.user = "ubuntu"
 
 def do_deploy(archive_path):
     """do_deploy
@@ -19,7 +18,7 @@ def do_deploy(archive_path):
     Returns:
         [True or False] -- [True only if successfully deploys archive]
     """
-    if not files.exists(archive_path):
+    if files.exists(archive_path) is False:
         return False
     put(archive_path, "/tmp/")
     name = archive_path.split('/')[-1][:-4]
