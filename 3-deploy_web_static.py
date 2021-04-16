@@ -9,8 +9,8 @@ from os import path
 
 
 env.hosts = ['34.74.188.209', '54.226.48.62']
-env.key_filename = "~/.ssh/holberton"
-env.user = "ubuntu"
+# env.key_filename = "~/.ssh/holberton"
+# env.user = "ubuntu"
 
 
 def do_pack():
@@ -28,7 +28,7 @@ def do_pack():
                                     curmonth, localtime.tm_mday,
                                     localtime.tm_hour, localtime.tm_min,
                                     localtime.tm_sec)
-    local("sudo mkdir -p versions")
+    local("mkdir -p versions")
     archivepath = "versions/web_static_{}.tgz".format(curtime)
     archive = local("tar -cvzf {} web_static/".format(archivepath),
                     capture=True)
