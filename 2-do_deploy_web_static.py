@@ -7,7 +7,7 @@ from fabric.contrib import files
 
 env.user = "ubuntu"
 env.hosts = ['web-01.peytonsmith.tech', 'web-02.peytonsmith.tech']
-env.key_filename = "~/.ssh/holberton"
+# env.key_filename = "~/.ssh/holberton"
 
 
 def do_deploy(archive_path):
