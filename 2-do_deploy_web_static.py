@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""deploy the archive
-"""
-from fabric.api import local, env, run, put, sudo
-from fabric.contrib import files
+"""deploy the archive"""
+from fabric.api import *
+from os import path
 
 
 env.hosts = ['34.74.188.209', '54.226.48.62']
 # env.key_filename = "~/.ssh/holberton"
 # env.user = "ubuntu"
+
 
 def do_deploy(archive_path):
     """do_deploy
@@ -18,7 +18,7 @@ def do_deploy(archive_path):
     Returns:
         [True or False] -- [True only if successfully deploys archive]
     """
-    if files.exists(archive_path) is False:
+    if not path.exists(archive_path):
         return False
     put(archive_path, "/tmp/")
     name = archive_path.split('/')[-1][:-4]
