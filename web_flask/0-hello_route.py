@@ -3,7 +3,6 @@
 Routes Hello
 """
 from flask import Flask
-import os
 
 
 app = Flask(__name__)
@@ -20,4 +19,5 @@ def hello_world(strict_slashes=False):
     return 'Hello HBNB!'
 
 
-app.run(host='0.0.0.0')
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
