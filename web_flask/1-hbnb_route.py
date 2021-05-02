@@ -19,6 +19,7 @@ def hello_world(strict_slashes=False):
     """
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb')
 def hbnb(strict_slashes=False):
     """
@@ -28,5 +29,6 @@ def hbnb(strict_slashes=False):
         [String] -- [HBNB]
     """
     return 'HBNB'
+
 
 app.run(host='0.0.0.0')

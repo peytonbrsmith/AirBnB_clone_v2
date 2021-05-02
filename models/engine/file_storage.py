@@ -31,16 +31,6 @@ class FileStorage:
             return
         if (obj):
             del(obj)
-        # if (obj is None):
-        #     return
-
-        # key = obj.__class__.__name__ + '.' + obj.id
-
-        # try:
-        #     del(self.all()[key])
-        #     self.save()
-        # except KeyError:
-        #     print("** no instance found **")
 
     def reload(self):
         """Loads storage dictionary from file"""
@@ -65,3 +55,7 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def close(self):
+        """ close method """
+        self.reload()

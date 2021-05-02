@@ -19,4 +19,5 @@ def hello_world(strict_slashes=False):
     """
     return 'Hello HBNB!'
 
+
 app.run(host='0.0.0.0')

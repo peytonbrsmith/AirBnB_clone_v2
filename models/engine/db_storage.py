@@ -13,7 +13,8 @@ import os
 
 
 classes = {
-    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+    # 'BaseModel': BaseModel,
+    'User': User, 'Place': Place,
     'State': State, 'City': City, 'Amenity': Amenity,
     'Review': Review
 }
@@ -40,7 +41,7 @@ class DBStorage:
         dict_objs = {}
         if cls:
             for name in classes:
-                if cls == name:
+                if cls.__name__ == name:
                     find = self.__session.query(classes[name]).all()
                     for i in find:
                         key = i.__class__.__name__ + '.' + i.id
@@ -67,10 +68,16 @@ class DBStorage:
             self.__session.delete(obj)
             self.save()
 
-    def reload(self):
+    def reload(self, remove=False):
         """ reload method """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
         Session = scoped_session(session_factory)
+        if remove:
+            Session.remove()
         self.__session = Session()
+
+    def close(self):
+        """ close method """
+        self.reload(remove=True)
