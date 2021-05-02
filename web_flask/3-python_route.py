@@ -64,4 +64,5 @@ def pythonwoutpath(strict_slashes=False):
     return 'Python is cool'
 
 
-app.run(host='0.0.0.0')
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

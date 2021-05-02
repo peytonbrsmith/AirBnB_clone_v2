@@ -97,4 +97,6 @@ def numbereo(number, strict_slashes=False):
     """
     return render_template('6-number_odd_or_even.html', number=number)
 
-app.run(host='0.0.0.0')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
