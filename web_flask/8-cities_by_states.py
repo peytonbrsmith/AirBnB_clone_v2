@@ -21,9 +21,7 @@ def stateslist(strict_slashes=False):
         [Template] -- [HBNB]
     """
     states = storage.all(State).values()
-    cities = storage.all(City).values()
-    return render_template('8-cities_by_states.html', states=states,
-                           cities=cities)
+    return render_template('8-cities_by_states.html', states=states)
 
 
 @app.teardown_appcontext
