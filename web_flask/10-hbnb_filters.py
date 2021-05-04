@@ -11,15 +11,14 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def tear_down(self):
-    """tear down app context"""
+    """closes storage"""
     storage.close()
 
 
 @app.route('/hbnb_filters', strict_slashes=False)
 def show_page():
-    """displays webpage
-    Returns:
-        HTML
+    """
+    HBNB
     """
     dict_states = storage.all(State)
     dict_amenities = storage.all(Amenity)
